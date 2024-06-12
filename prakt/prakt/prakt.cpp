@@ -47,12 +47,12 @@ void vstavka(struct z*, char*, int);
 int main(array<System::String ^> ^args) 
 {
 	char dan[7][100] = { 
-  "Какая самая дорогая монета на бирже Binance?         ", 
-  "Сколько монет прошло листинг на бирже?               ", 
-  "Есть ли у разных бирж монеты одинаковой цены         ", 
-  "Алфавитный список                                    ", 
-  "Диаграмма                                            ", 
-  "Выход                                                " 
+  "РљР°РєР°СЏ СЃР°РјР°СЏ РґРѕСЂРѕРіР°СЏ РјРѕРЅРµС‚Р° РЅР° Р±РёСЂР¶Рµ Binance?         ", 
+  "РЎРєРѕР»СЊРєРѕ РјРѕРЅРµС‚ РїСЂРѕС€Р»Рѕ Р»РёСЃС‚РёРЅРі РЅР° Р±РёСЂР¶Рµ?               ", 
+  "Р•СЃС‚СЊ Р»Рё Сѓ СЂР°Р·РЅС‹С… Р±РёСЂР¶ РјРѕРЅРµС‚С‹ РѕРґРёРЅР°РєРѕРІРѕР№ С†РµРЅС‹         ", 
+  "РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє                                    ", 
+  "Р”РёР°РіСЂР°РјРјР°                                            ", 
+  "Р’С‹С…РѕРґ                                                " 
     }; 
 
 char BlankLine[]="                                                       "; 
@@ -66,7 +66,7 @@ int NC;
  Console::BufferWidth=Console::WindowWidth; 
  if((in=fopen("cripto.dat","r"))==NULL) 
  { 
-  printf("\nФайл Vclad.dat не открыт !"); 
+  printf("\nР¤Р°Р№Р» Vclad.dat РЅРµ РѕС‚РєСЂС‹С‚ !"); 
   getch(); exit(1); 
  } 
  fscanf(in,"%d",&NC); 
@@ -124,12 +124,12 @@ int NC;
 int menu(int n)  
 {  
 char dan[7][100] = { 
-  "Какая самая дорогая монета на бирже Binance?         ", 
-  "Сколько монет прошло листинг на бирже?               ", 
-  "Есть ли у разных бирж монеты одинаковой цены         ", 
-  "Алфавитный список                                    ", 
-  "Диаграмма                                            ", 
-  "Выход                                                " 
+  "РљР°РєР°СЏ СЃР°РјР°СЏ РґРѕСЂРѕРіР°СЏ РјРѕРЅРµС‚Р° РЅР° Р±РёСЂР¶Рµ Binance?         ", 
+  "РЎРєРѕР»СЊРєРѕ РјРѕРЅРµС‚ РїСЂРѕС€Р»Рѕ Р»РёСЃС‚РёРЅРі РЅР° Р±РёСЂР¶Рµ?               ", 
+  "Р•СЃС‚СЊ Р»Рё Сѓ СЂР°Р·РЅС‹С… Р±РёСЂР¶ РјРѕРЅРµС‚С‹ РѕРґРёРЅР°РєРѕРІРѕР№ С†РµРЅС‹         ", 
+  "РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє                                    ", 
+  "Р”РёР°РіСЂР°РјРјР°                                            ", 
+  "Р’С‹С…РѕРґ                                                " 
     }; 
  
 char BlankLine[]="                                                       "; 
@@ -156,7 +156,7 @@ char BlankLine[]="                                                       ";
   Console::CursorTop=y2+5;  
   printf("%s",dan[y2]);  
   c=getch();  
- }; // конец while(c!=ESC)...  
+ }; // РєРѕРЅРµС† while(c!=ESC)...  
  exit(0);  
 };  
   
@@ -176,10 +176,10 @@ Console::ForegroundColor=ConsoleColor::Red;
 Console::BackgroundColor=ConsoleColor::Black; 
 Console::CursorLeft=10; 
 Console::CursorTop=15; 
-printf("Самая дорогая монета %ld $",best.price);
+printf("РЎР°РјР°СЏ РґРѕСЂРѕРіР°СЏ РјРѕРЅРµС‚Р° %ld $",best.price);
 Console::CursorLeft=10; 
 Console::CursorTop=16; 
-printf("Название монеты %s",best.coin); 
+printf("РќР°Р·РІР°РЅРёРµ РјРѕРЅРµС‚С‹ %s",best.coin); 
 getch(); 
 } 
  
@@ -193,7 +193,7 @@ void kolvo(struct z *client, int NC)
  Console::BackgroundColor=ConsoleColor::Black;
  Console::Clear();
 
- printf("\n\tВведите название биржи: ");
+ printf("\n\tР’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ Р±РёСЂР¶Рё: ");
  SetConsoleCP(1251);
  gets(birza);
  SetConsoleCP(866);
@@ -206,8 +206,8 @@ void kolvo(struct z *client, int NC)
  Console::BackgroundColor=ConsoleColor::Black;
  Console::CursorLeft=10;
  Console::CursorTop=15;
- printf("\n\tБиржа %s", birza);
- printf("\n\tВсего: %d монет, которыми можно торговать",k);
+ printf("\n\tР‘РёСЂР¶Р° %s", birza);
+ printf("\n\tР’СЃРµРіРѕ: %d РјРѕРЅРµС‚, РєРѕС‚РѕСЂС‹РјРё РјРѕР¶РЅРѕ С‚РѕСЂРіРѕРІР°С‚СЊ",k);
  getch();
 }
  
@@ -223,7 +223,7 @@ if(!spisok)
 for(i=0;i<NC;i++)
 vstavka(client,client[i].coin, NC);
 Console::Clear();
-printf("\n\t\t Алфавитный список и обратный список Монет");
+printf("\n\t\t РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє Рё РѕР±СЂР°С‚РЅС‹Р№ СЃРїРёСЃРѕРє РњРѕРЅРµС‚");
 printf("\n =================================================================================\n");
 
 
@@ -320,8 +320,8 @@ void hard_question(struct z* client, int NC)
   {
    if (client[i].price == client[j].price)
    {
-   printf("\n\tСтоимость монеты %s биржи %s равна стоимости монеты %s биржи %s",client[i].coin, client[i].bir, client[j].coin, client[j].bir);
-   printf("\n\tЦена %ld \n", client[i].price);
+   printf("\n\tРЎС‚РѕРёРјРѕСЃС‚СЊ РјРѕРЅРµС‚С‹ %s Р±РёСЂР¶Рё %s СЂР°РІРЅР° СЃС‚РѕРёРјРѕСЃС‚Рё РјРѕРЅРµС‚С‹ %s Р±РёСЂР¶Рё %s",client[i].coin, client[i].bir, client[j].coin, client[j].bir);
+   printf("\n\tР¦РµРЅР° %ld \n", client[i].price);
    flag = 1;
    break;
    }
@@ -329,6 +329,6 @@ void hard_question(struct z* client, int NC)
   if (flag == 1) {break;}
  }
  if (flag == 0)
- {printf("Совпадений нет");}
+ {printf("РЎРѕРІРїР°РґРµРЅРёР№ РЅРµС‚");}
  getch();
 }
