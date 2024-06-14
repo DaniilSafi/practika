@@ -31,15 +31,15 @@ struct sp {
  long cap; 
  struct sp* sled;
  struct sp* pred;
-} *spisok; 
+}; 
  
 int menu(int); 
 void maxim(struct z*, int); 
 void kolvo(struct z*, int); 
-void alfalist(struct z*, int); 
-void diagram(struct z*, int); 
+void alfalist(struct z*, int, struct sp**); 
+void diagram(struct z*, int, struct sp**); 
 void hard_question(struct z*, int);
-void vstavka(struct z*, char*, int);
+void vstavka(struct z*, char*, int, struct sp**);
  
  
  
@@ -107,12 +107,15 @@ int NC;
     printf(BlankLine);  
    
     n=menu(6);  
+
+	struct sp* spisok = 0;
+
     switch(n) {  
   case 1: maxim(clients, NC); break;  
   case 2: kolvo(clients, NC); break;  
   case 3: hard_question(clients, NC);break; 
-  case 4: alfalist(clients, NC);break; 
-  case 5: diagram(clients, NC);break; 
+  case 4: alfalist(clients, NC, &spisok);break; 
+  case 5: diagram(clients, NC, &spisok);break; 
   case 6: exit(0);  
     }  
    }   
@@ -211,7 +214,7 @@ void kolvo(struct z *client, int NC)
  getch();
 }
  
-void alfalist(struct z* client, int NC)
+void alfalist(struct z* client, int NC, struct sp** spisok)
 {
 int i, n = 0;
 struct sp* nt;
@@ -219,18 +222,18 @@ struct sp* z;
 Console::ForegroundColor=ConsoleColor::Red;
 Console::BackgroundColor=ConsoleColor::Black;
 Console::Clear();
-if(!spisok)
+if(!*spisok)
 for(i=0;i<NC;i++)
-vstavka(client,client[i].coin, NC);
+vstavka(client,client[i].coin, NC, spisok);
 Console::Clear();
 printf("\n\t\t Алфавитный список и обратный список Монет");
 printf("\n =================================================================================\n");
 
 
 
-for(nt=spisok; nt!=0; nt=nt->sled)
+for(nt=*spisok; nt!=0; nt=nt->sled)
 printf("\n %-20s %ld",nt->fio,nt->cap);
-for(nt = spisok, z=0; nt!=0; z=nt, nt = nt->sled);
+for(nt = *spisok, z=0; nt!=0; z=nt, nt = nt->sled);
 for(nt=z;nt!=0;nt=nt->pred){
 	Console::CursorLeft = 48;
 	Console::CursorTop = 4+n;
@@ -243,11 +246,11 @@ getch();
 
 
 
-void vstavka(struct z* client,char* fio, int NC)
+void vstavka(struct z* client,char* fio, int NC, struct sp**spisok)
 {
 int i;
 struct sp *nov,*nt,*z=0;
-for(nt=spisok; nt!=0 && strcmp(nt->fio,fio)<0; z=nt, nt=nt->sled);
+for(nt=*spisok; nt!=0 && strcmp(nt->fio,fio)<0; z=nt, nt=nt->sled);
 	if(nt && strcmp(nt->fio,fio)==0) return;
 		nov=(struct sp *) malloc(sizeof(struct sp));
 strcpy(nov->fio,fio);
@@ -259,7 +262,7 @@ for(i=0;i<NC;i++){
 		nov->cap+=client[i].cap;
 		
 }
-if (!z) spisok = nov;
+if (!z) *spisok = nov;
 else z->sled=nov;
 if(nt) nt->pred=nov;
 nov->sled=nt;
@@ -267,7 +270,7 @@ nov->sled=nt;
 return;
 }
 
-void diagram(struct z *client, int NC)
+void diagram(struct z *client, int NC, struct sp** spisok)
 {
 struct sp *nt;
 int len,i,NColor,LEN;
@@ -280,9 +283,9 @@ Console::BackgroundColor=ConsoleColor::Black;
 Console::Clear();
 for(i=0;i<NC;i++) 
 sum = sum+client[i].cap ;
-if(!spisok)
+if(!*spisok)
  for(i=0;i<NC;i++)
-  vstavka(client,client[i].coin, NC);
+  vstavka(client,client[i].coin, NC, spisok);
 Color=ConsoleColor::Black; NColor=0;
 
 for(i=0; i<NC; i++)
